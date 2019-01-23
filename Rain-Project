@@ -1,17 +1,17 @@
-/* Instructions: 
+/* Instructions:
 
-To make an animation of rain, it's best if we use arrays to keep track of the drops and their different properties. 
+To make an animation of rain, it's best if we use arrays to keep track of the drops and their different properties.
 Start with this simple code and build on it to make a cool rain animation. Here are some ideas for what you could do:
 
-Add more drops to the arrays.  CHECK
+1. Add more drops to the arrays.  CHECK
 
-Make it so that the drops start back at the top once they've reached the bottom, using a conditional.  STUCK
+2. Make it so that the drops start back at the top once they've reached the bottom, using a conditional.  STUCK
 
-Make an array of colors, so that every drop is a different color.  SEE COMMENT BELOW LINE 20-21
+3. Make an array of colors, so that every drop is a different color.  SEE COMMENT BELOW LINE 20-21
 
-Make other things rain, like snowflakes (using more shape commands) or avatars (using the image commands).
+4. Make other things rain, like snowflakes (using more shape commands) or avatars (using the image commands).
 
-Make it so that when the user clicks, a new drop is added to the array.
+5. Make it so that when the user clicks, a new drop is added to the array.
 Initialize the arrays using a for loop and random() function, at the beginning of the program. */
 
 
@@ -21,15 +21,31 @@ var yPositions = [ 0, 0, 0, 0, 0, 0, 0 ];
 var rainColor = [ fill(252, 0, 0), fill(234, 0, 255), fill(255, 0, 0), fill(17, 0, 255), fill(0, 255, 68), fill(255, 149, 0), fill(162, 0, 255) ];
 // Is this the right way to create an array of color fills?//
 
+/* 3. You are close with this. Refer to the "Documentation" tab on the Khan Academy page, specifically the 'store color in a variable' bit.
+Example: var rainColor = [ color(252, 0, 0), ..., ..., ... ]
+*/
+
+// Also note that you can comment a single line with only opening slashes - closing slashes not needed!
+
+
+
 draw = function() {
     background(204, 247, 255);
     for (var i = 0; i < xPositions.length; i++) {
         noStroke();
         fill(255, 0, 0);
+        // for the color fill, you can now use your rainColor array that you created above to grab color sets
         ellipse(xPositions[i], yPositions[i], 10, 10);
+
+        // The 'y' position is the vertical position, so this controls the raindrop falling
         yPositions[i] += 5;
     }
-};  
 
-/* Where can I place the if statement and what exactly do I need to write in it 
+    // 2. This will cause the drop to change yPosition when it hits 400 from top
+        if(yPositions[i] === 400){ // play with this value
+          // Write code to reset the drop's yPosition here
+        }
+};
+
+/* Where can I place the if statement and what exactly do I need to write in it
 to make the animation start over at the beginning?  Or do I need to go back and review if statements? */
