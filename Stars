@@ -1,0 +1,28 @@
+//hints taken from 'project rain fast' video on youtube by user Brew Sauce
+
+var xPositions = [100,200];
+var yPositions = [0,100];
+
+var rainColors = [color(random(0,255), random(0,255), random(0,255)), color(random(0,255), random(0,255), random(0,255)), color(random(0,255), random(0,255), random(0,255)), color(random(0,255), random(0,255), random(0,255)), color(random(0,255), random(0,255), random(0,255)), color(random(0,255), random(0,255), random(0,255)), color(random(0,255), random(0,255), random(0,255)), color(random(0,255), random(0,255), random(0,255)), color(random(0,255), random(0,255), random(0,255)), color(random(0,255), random(0,255), random(0,255)), color(random(0,255), random(0,255), random(0,255))];
+
+//star
+var star = getImage("space/star");
+
+draw = function() {
+    background(3, 3, 3);
+
+    for (var i = 0; i < xPositions.length; i++) {
+        noStroke();
+        fill(rainColors[i]);
+        if(yPositions[i] > 400) {
+            yPositions[i] = 0;
+        }
+        image(star, xPositions[i], yPositions[i], 30, 30);
+        yPositions[i] += random(1,10);
+    }
+};
+
+var mouseClicked = function () {
+    xPositions.push(random(0,400));
+    yPositions.push(random(0,400));
+};
